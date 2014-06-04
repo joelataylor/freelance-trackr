@@ -1,0 +1,20 @@
+<div class="well">
+  {{#link-to 'client.edit' content}}Edit Client Details{{/link-to}}
+  <h1>{{name}}</h1>
+  <p>Status: {{status}}</p>
+  <p>Contact: {{contact}}</p>
+  <p>Email: {{email}}</p>
+  <p>Phone: {{phone}}</p>
+  <p>Address: {{address}}</p>
+  <p>City: {{city}}</p>
+  <p>State: {{state}}</p>
+  <p>Zip: {{zip}}</p>
+
+  <h2>Projects:</h2>
+  <dl>
+    {{#each projects}}
+    <dt>{{#link-to 'project' this}}{{name}}{{/link-to}}</dt>
+    <dd>{{status}}</dd>
+    {{/each}}
+  </dl>
+</div>

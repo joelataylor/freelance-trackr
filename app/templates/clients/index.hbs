@@ -1,0 +1,24 @@
+<div class="col-md-9">
+  <div class="well">
+    <p>
+      {{#link-to 'clients.new' tagName='button' class='btn btn-info btn-lg'}}<span class="glyphicon glyphicon-plus"></span> Add Client{{/link-to}}
+    </p>
+
+    <ul class="nav list-group">
+      {{#each client in content}}
+        <li {{bind-attr class=":list-group-item client.status:status-active:status-inactive"}}>
+          {{#link-to 'client' client class="mel lead"}}{{client.name}}{{/link-to}}
+          <ul class="client-overview-details">
+            <li><span class="overview-details-title">Contact:</span> {{client.contact}}</li>
+            <li>{{#link-to 'client.edit' client}}Edit Client{{/link-to}}</li>
+          </ul> <!-- .client-overview-details -->
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+</div>
+<div class="col-md-3">
+  <div class="well">
+    <strong>Due Invoices</strong>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+<div class="col-md-9">
+  <h1 class="today">Today is {{current-date}}</h1>
+  {{#link-to 'projects.new' tagName='button' class='btn btn-default btn-new pull-right'}}<span class="glyphicon glyphicon-plus"></span> Add Project{{/link-to}}
+
+  <ul class="list-group">
+    {{#each project in content}}
+      <li class="media list-group-item">
+        <h2 class="list-item-title">{{#link-to 'project' project}}{{project.name}}{{/link-to}}</h2>
+
+        <div class="dropdown list-item-actions">
+          <span class="glyphicon glyphicon-cog dropdown-toggle" data-toggle="dropdown"></span>
+          <ul class="dropdown-menu dropdown-menu-right" role="menu">
+            <li>{{#link-to 'project.edit' project}}Edit{{/link-to}}</li>
+            <li><a href="" {{action 'deleteProject'}}>Delete</a></li>
+          </ul>
+        </div>
+
+        <p class="list-item-subtitle">{{#link-to 'client' project.client}} {{project.client.name}} {{/link-to}}</p>
+        <ul class="list-group-nested">
+          <li>Start Date: <b class="bold">{{format-date project.start_date 'LL'}}</b></li>
+          <li>Client Contact: <b class="bold"><a {{bind-attr href=project.client.mailto}}>{{project.client.contact}}</a></b></li>
+        </ul> <!-- .list-group-nested -->
+        <p class="list-item-dollar media-heading">${{project.total}}</p>
+      </li>
+    {{/each}}
+  </ul>
+
+</div>
+<div class="col-md-3">
+  <div class="well">
+    <strong>Due Invoices</strong>
+  </div>
+</div>

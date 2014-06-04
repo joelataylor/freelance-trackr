@@ -1,0 +1,165 @@
+@import 'vendor/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap';
+@import 'mixins';
+
+/** Colors **/
+$color1: #BED4DF;
+$color2: #78A3B9;
+$color3: #4C5D75;
+$color4: #323E4E;
+$color5: #2D3032;
+$color6: rgba(100,100,100,.5);
+
+html, body {
+  margin: 30px 0;
+}
+body {
+  padding-top: 40px;
+  font-family: 'Roboto';
+  font-weight: 300;
+}
+
+h1 {
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+}
+a {
+  @include transition(all, .2s);
+  color: $color2;
+
+  &:hover {
+    color: $color3;
+    text-decoration: none;
+  }
+}
+button {
+  @include transition(all, .2s);
+}
+
+.nav li {
+  cursor: pointer;
+
+  &:hover {
+    background-color: $color1;
+  }
+}
+
+.today {
+  float: left;
+  margin-top: 0;
+}
+
+.btn-new {
+  margin-bottom: 1em;
+  text-transform: uppercase;
+  color: $color3;
+
+  &:hover {
+    background-color: $color5;
+    color: $color1;
+    border-color: #000;
+  }
+
+  .glyphicon {
+    font-size: .8em;
+    top: 0px;
+    margin-right: 3px;
+  }
+}
+
+.list-group {
+  clear: both;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-content: flex-start;
+}
+
+.list-group-item {
+  flex-basis: 275px;
+  @include transition();
+
+  &:hover {
+    box-shadow: 0 0 5px $color6;
+  }
+}
+
+.list-item-title {
+  float: left;
+  width: 94%;
+  font-size: 2rem;
+  margin-bottom: 7px;
+  margin-top: 0px;
+}
+
+.list-item-actions {
+  float: right;
+  cursor: pointer;
+  margin-top: 2px;
+}
+.dropdown-menu {
+  min-width: 80px;
+}
+
+.list-item-subtitle {
+  clear: both;
+  display: block;
+  font-size: 1.45rem;
+  text-transform: uppercase;
+  font-weight: normal;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.list-item-dollar {
+  margin-top: 0;
+  margin-bottom: 16px;
+  font-size: 2.3em;
+  font-weight: bold;
+}
+
+.list-group-nested {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    .bold {
+      font-weight: 400;
+    }
+  }
+}
+
+
+
+table.services {
+  tfoot {
+    td {
+      background-color: #ccc;
+      padding-top: 1em;
+      padding-bottom: 1em;
+      line-height: 2em;
+    }
+    input[type='date'] {
+      width: 11em;
+      padding-right: 0;
+    }
+    input[type='number'] {
+      width: 5em;
+      padding-right: 0;
+    }
+    .input-description {
+      width: 17em;
+    }
+  }
+
+  .total-title {
+    @extend .total-amount;
+    text-align: right;
+  }
+  .total-amount {
+    font-weight: bold;
+    font-size: 1.7em;
+    color: #ff0000;
+  }
+}
