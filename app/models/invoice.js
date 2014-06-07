@@ -7,6 +7,8 @@ export default DS.Model.extend({
   email_text: attr(),
   email_to: attr(),
   notes: attr(),
+  received_date: attr(),
+
   project: belongsTo('project', { async: true }),
-  received_date: attr()
+  client: belongsTo('client', { async: true })
 });

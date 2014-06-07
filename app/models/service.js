@@ -6,17 +6,13 @@ export default DS.Model.extend({
     defaultValue: function() { return moment().format('YYYY-MM-DD'); }
   }),
   description: attr(),
-  per: attr('string', {
-    defaultValue: function() { return 'hour'; }
-  }),
-  price: attr('number', {
-    defaultValue: function() { return 100; }
-  }),
-  project: belongsTo('project', { async: true }),
-  quantity: attr('number', {
-    defaultValue: function() { return 1; }
-  }),
+  per: attr('string', { defaultValue: 'hour' }),
+  price: attr('number', { defaultValue: 100 }),
+  quantity: attr('number', { defaultValue: 1 }),
   type: attr(),
+
+  project: belongsTo('project', { async: true }),
+
   total: function() {
     return (this.get('quantity') * this.get('price')).toFixed(2);
   }.property('quantity','price'),

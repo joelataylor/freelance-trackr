@@ -1,22 +1,12 @@
 export default Ember.ObjectController.extend({
-  projects: function() {
-    var client = this.get('model');
+  totalReceived: function() {
+    var projects = this.get('projects');
+    var total = 0;
 
-    var promise = this.store.findAll('project')
-      .then(function(allProjects){
-        return Ember.RSVP.Promise.all(allProjects.map(function(project) {
-          return project.get('client');
-        })).then(function() {
-          var filtered = allProjects.filter(function(item){
-            return item.get('client.id') === client.get('id');
-          });
-          return filtered;
-        });
-      });
+    projects.forEach(function(project){
+      total += parseFloat(project.get('total'));
+    });
 
-   return DS.PromiseArray.create({
-      promise: promise
-   });
-
-  }.property()
+    return total.toFixed(2);
+  }.property('projects.@each', 'projects.@each.total')
 });

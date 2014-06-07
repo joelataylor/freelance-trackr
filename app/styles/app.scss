@@ -2,12 +2,13 @@
 @import 'mixins';
 
 /** Colors **/
-$color1: #BED4DF;
-$color2: #78A3B9;
-$color3: #4C5D75;
-$color4: #323E4E;
-$color5: #2D3032;
-$color6: rgba(100,100,100,.5);
+$color1: #BED4DF; //Light blue
+$color2: #78A3B9; //Bright blue
+$color3: #4C5D75; //Medium blue
+$color4: #323E4E; //Dark Medium blue
+$color5: #2D3032; //Dark blue
+$color6: rgba(100,100,100,.5); //Transparent Gray
+$color7: hsla(360, 35%, 75%, .5); //Redish
 
 html, body {
   margin: 30px 0;
@@ -24,7 +25,7 @@ h1 {
   letter-spacing: -1px;
 }
 a {
-  @include transition(all, .2s);
+  @include transition();
   color: $color2;
 
   &:hover {
@@ -33,14 +34,23 @@ a {
   }
 }
 button {
-  @include transition(all, .2s);
+  @include transition();
+}
+
+.navbar-brand {
+  font-family: 'Nova Mono';
+  font-size: 3.6rem;
+  letter-spacing: -4px;
 }
 
 .nav li {
+  @include transition();
   cursor: pointer;
+  text-transform: uppercase;
 
+  &.active,
   &:hover {
-    background-color: $color1;
+    background-color: $color2;
   }
 }
 
@@ -162,4 +172,21 @@ table.services {
     font-size: 1.7em;
     color: #ff0000;
   }
+}
+
+.status-inactive {
+  background-color: $color7;
+}
+
+.modal-content {
+  padding: 1em;
+}
+
+.overlay {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.2);
 }

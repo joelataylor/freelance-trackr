@@ -1,21 +1,27 @@
 <div class="col-md-9">
-  <div class="well">
-    <p>
-      {{#link-to 'clients.new' tagName='button' class='btn btn-info btn-lg'}}<span class="glyphicon glyphicon-plus"></span> Add Client{{/link-to}}
-    </p>
+  {{#link-to 'clients.new' tagName='button' class='btn btn-default btn-new pull-right'}}<span class="glyphicon glyphicon-plus"></span> Add Client{{/link-to}}
 
-    <ul class="nav list-group">
-      {{#each client in content}}
-        <li {{bind-attr class=":list-group-item client.status:status-active:status-inactive"}}>
-          {{#link-to 'client' client class="mel lead"}}{{client.name}}{{/link-to}}
-          <ul class="client-overview-details">
-            <li><span class="overview-details-title">Contact:</span> {{client.contact}}</li>
-            <li>{{#link-to 'client.edit' client}}Edit Client{{/link-to}}</li>
-          </ul> <!-- .client-overview-details -->
-        </li>
-      {{/each}}
-    </ul>
-  </div>
+  <ul class="list-group">
+    {{#each client in controller}}
+      <li {{bind-attr class=":media :list-group-item status:status-active:status-inactive"}}>
+        <h2 class="list-item-title">{{#link-to 'client' client}}{{client.name}}{{/link-to}}</h2>
+
+        <div class="dropdown list-item-actions">
+          <span class="glyphicon glyphicon-cog dropdown-toggle" data-toggle="dropdown"></span>
+          <ul class="dropdown-menu dropdown-menu-right" role="menu">
+            <li>{{#link-to 'client.edit' client}}Edit{{/link-to}}</li>
+            <li><a href="" {{action 'openModal' 'modal' client}}>Delete</a></li>
+          </ul>
+        </div>
+
+        <ul class="list-group-nested">
+          <li>City: <b class="bold">{{client.city}}</b></li>
+          <li>Contact: <b class="bold">{{client.contact}}</b></li>
+        </ul>
+        <p class="list-item-dollar media-heading">${{client.totalReceived}}</p>
+      </li>
+    {{/each}}
+  </ul>
 </div>
 <div class="col-md-3">
   <div class="well">

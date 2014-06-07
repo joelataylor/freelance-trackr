@@ -1,4 +1,5 @@
-var attr = DS.attr;
+var attr = DS.attr,
+    hasMany = DS.hasMany;
 
 export default DS.Model.extend({
   name: attr(),
@@ -24,6 +25,9 @@ export default DS.Model.extend({
   zip: attr('string', {
     defaultValue: null
   }),
+
+  projects: hasMany('project', {async: true}),
+  invoices: hasMany('invoice', {async: true}),
 
   mailto: function() {
     return "mailto:" + this.get('email');
