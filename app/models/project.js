@@ -14,15 +14,5 @@ export default DS.Model.extend({
 
   invoice: belongsTo('invoice', { async: true }),
   client: belongsTo('client', { async: true }),
-  services: hasMany('service', { async: true }),
-
-  total: function() {
-    var total = 0;
-
-    this.get('services').forEach(function(service){
-      total += parseFloat(service.get('total'));
-    });
-
-    return total.toFixed(2);
-  }.property('services.@each.total')
+  services: hasMany('service', { async: true })
 });

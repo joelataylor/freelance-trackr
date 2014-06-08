@@ -24,6 +24,11 @@ h1 {
   text-transform: uppercase;
   letter-spacing: -1px;
 }
+h2 {
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: -.5px;
+}
 a {
   @include transition();
   color: $color2;
@@ -147,11 +152,13 @@ button {
 
 
 table.services {
+  thead {
+    text-transform: capitalize;
+  }
+
   tfoot {
-    td {
+    .new-service td {
       background-color: #ccc;
-      padding-top: 1em;
-      padding-bottom: 1em;
       line-height: 2em;
     }
     input[type='date'] {
@@ -165,7 +172,13 @@ table.services {
     .input-description {
       width: 17em;
     }
+
+    .tax,
+    .discount {
+      text-align: right;
+    }
   }
+
   .total-amount {
     font-weight: bold;
     font-size: 1.7em;

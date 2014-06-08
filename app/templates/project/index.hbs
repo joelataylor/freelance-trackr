@@ -1,19 +1,23 @@
 <div class="">
-  {{#link-to 'project.edit' content}}Edit Project Details{{/link-to}}
-  <h1>{{name}}</h1>
-  <p>Client: {{client.name}}</p>
-  <p>Status: {{status}}</p>
-  <p>Start Date: {{start_date}}</p>
+  <h1>{{name}}
+    <span class="btn-group pull-right">
+      {{#link-to 'project.edit' content tagName="button" class="btn btn-default"}}<span class="glyphicon glyphicon-pencil"></span> Edit Project Details{{/link-to}}
+    </span>
+  </h1>
+
+  <p>Client: <b class="bold">{{client.name}}</b></p>
+  <p>Status: <b class="bold">{{status}}</b></p>
+  <p>Start Date: <b class="bold">{{format-date start_date 'MMMM D, YYYY'}}</b></p>
   {{#if finish_date}}
-  <p>Finish Date: {{finish_date}}</p>
+  <p>Finish Date:  <b class="bold">{{finish_date}}</b></p>
   {{/if}}
-  <p>Tax: {{tax}}</p>
-  <p>Discount: {{discount}}</p>
+  <p>Tax: <b class="bold">{{tax}}%</b></p>
+  <p>Discount:  <b class="bold">{{discount}}%</b></p>
   {{#if invoice}}
-    <p>Invoice Due: {{invoice.due_date}}</p>
+    <p>Invoice Due: <b class="bold">{{format-date invoice.due_date 'MMMM D, YYYY'}}</b></p>
   {{/if}}
 
-  <p>Services:</p>
+  <h2>Services:</h2>
   <table class="services table">
     <thead>
       <tr>
@@ -38,14 +42,10 @@
           <td><a {{action 'editService' this}} class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil"></span> Edit</a> <a {{action 'removeService' this}} class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-remove-circle"></span> Delete</a></td>
         </tr>
       {{/each}}
-      <tr>
-        <td colspan="5" class="total-title">Total:</td>
-        <td colspan="2" class="total-amount">${{total}}</td>
-      </tr>
     </tbody>
 
     <tfoot class="add-service form-inline" role="form">
-      <tr>
+      <tr class="new-service">
         <td>
           <label for="date" class="sr-only">Date:</label>
           {{input type="date" value=newService.date class="form-control input-sm"}}
@@ -73,6 +73,25 @@
         <td>
           <button {{action 'addService'}} class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-ok-circle"></span> Add</button>
         </td>
+      </tr>
+
+      {{#if discount}}
+      <tr>
+        <td colspan="5" class="discount">Discount ({{discount}}%)</td>
+        <td colspan="2" class="discount-amount">${{discountTotal}}</td>
+      </tr>
+      {{/if}}
+
+      {{#if tax}}
+      <tr>
+        <td colspan="5" class="tax">Tax ({{tax}}%)</td>
+        <td colspan="2" class="tax-amount">${{taxTotal}}</td>
+      </tr>
+      {{/if}}
+
+      <tr>
+        <td colspan="5" class="total-title">Total:</td>
+        <td colspan="2" class="total-amount">${{total}}</td>
       </tr>
     </tfoot>
   </table>
