@@ -14,8 +14,15 @@ export default Ember.ObjectController.extend({
 
       project.set('client', client);
       project.set('status', 'in-progress');
+
       project.save().then(function(){
-        self.transitionToRoute('project.index', project);
+        // We have to manually save the project to the client
+        client.get('projects').then(function(projects){
+          projects.addObject(project);
+          client.save().then(function(){
+            self.transitionToRoute('project.index', project);
+          });
+        });
       });
 
     }

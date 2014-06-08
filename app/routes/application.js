@@ -13,6 +13,11 @@ export default Ember.Route.extend({
         outlet: 'modal',
         parentView: 'application'
       });
+    },
+
+    deleteClient: function(client) {
+      client.destroyRecord();
+      this.send('closeModal');
     }
   }
 });

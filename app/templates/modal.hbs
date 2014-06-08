@@ -1,6 +1,7 @@
-{{#modal-dialog action="close"}}
-<h3 class="flush--top">Name Change Modal</h5>
-<p>Enter a new name:</p>
-<p>{{input value=name}}</p>
-<button {{action "close"}}>Done</button>
+{{#modal-dialog}}
+  <button type="button" class="close" {{action "close"}}>×</button>
+  <h3 class="modal-title">Are You Sure?</h3>
+  <p>Do you want to delete <b class="bold">{{name}}</b>?</p>
+  <button {{action "close"}} class="btn btn-default">Cancel</button>
+  <button {{action "deleteClient" this}} class="btn btn-success">Yes, I'm sure!</button>
 {{/modal-dialog}}

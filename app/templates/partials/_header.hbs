@@ -7,16 +7,16 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">FreelanceTrackr</a>
+      {{#link-to 'projects.index' class="navbar-brand"}}FreelanceTrackr{{/link-to}}
     </div><!--  .navbar-header -->
 
     <div class="collapse navbar-collapse navbar-right navbar-ex1-collapse">
       <ul class="nav navbar-nav">
         {{#link-to 'projects.index' tagName='li'}}{{#link-to 'projects.index'}}Projects{{/link-to}}{{/link-to}}
-        <li>{{#link-to 'invoices'}}Invoices{{/link-to}}</li>
+        {{#link-to 'invoices' tagName='li'}}{{#link-to 'invoices'}}Invoices{{/link-to}}{{/link-to}}
         {{#link-to 'clients.index' tagName='li'}}{{#link-to 'clients.index'}}Clients{{/link-to}}{{/link-to}}
-        <li>{{#link-to 'services'}}Services{{/link-to}}</li>
-        <li>{{#link-to 'reports'}}Reports{{/link-to}}</li>
+        {{#link-to 'services' tagName='li'}}{{#link-to 'services'}}Services{{/link-to}}{{/link-to}}
+        {{#link-to 'reports' tagName='li'}}{{#link-to 'reports'}}Reports{{/link-to}}{{/link-to}}
       </ul>
     </div><!-- .collapse -->
   </div>

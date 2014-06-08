@@ -27,54 +27,53 @@
       </tr>
     </thead>
     <tbody class="table-striped">
-    {{#each services}}
-      <tr>
-        <td>{{date}}</td>
-        <td>{{type}}</td>
-        <td>{{description}}</td>
-        <td>${{price}}/{{per}}</td>
-        <td>{{quantity}}</td>
-        <td>${{total}}</td>
-        <td><a {{action 'editService' this}} class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil"></span> Edit</a> <a {{action 'removeService' this}} class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-remove-circle"></span> Delete</a></td>
-      </tr>
-    {{/each}}
+      {{#each services}}
+        <tr>
+          <td>{{date}}</td>
+          <td>{{type}}</td>
+          <td>{{description}}</td>
+          <td>${{price}}/{{per}}</td>
+          <td>{{quantity}}</td>
+          <td>${{total}}</td>
+          <td><a {{action 'editService' this}} class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil"></span> Edit</a> <a {{action 'removeService' this}} class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-remove-circle"></span> Delete</a></td>
+        </tr>
+      {{/each}}
       <tr>
         <td colspan="5" class="total-title">Total:</td>
         <td colspan="2" class="total-amount">${{total}}</td>
       </tr>
     </tbody>
+
     <tfoot class="add-service form-inline" role="form">
-      {{#with newService}}
       <tr>
         <td>
           <label for="date" class="sr-only">Date:</label>
-          {{input type="date" value=date class="form-control input-sm"}}
+          {{input type="date" value=newService.date class="form-control input-sm"}}
         </td>
         <td>
           <label for="type" class="sr-only">Type:</label>
-          {{view Ember.Select content=serviceTypes value=type class="form-control input-sm"}}
+          {{view Ember.Select content=newService.serviceTypes value=newService.type class="form-control input-sm"}}
         </td>
         <td>
           <label for="description" class="sr-only">Description:</label>
-          {{input type="text" value=description class="form-control input-sm input-description"}}
+          {{input type="text" value=newService.description class="form-control input-sm input-description"}}
         </td>
         <td>
           <label for="price" class="sr-only">Price:</label>
-          {{input type="number" value=price class="form-control input-sm"}}/
-          {{view Ember.Select content=servicePer value=per class="form-control input-sm"}}
+          ${{input type="number" value=newService.price class="form-control input-sm"}}/
+          {{view Ember.Select content=newService.servicePer value=newService.per class="form-control input-sm"}}
         </td>
         <td>
           <label for="quantity" class="sr-only">Quantity:</label>
-          {{input type="number" value=quantity class="form-control input-sm"}}
+          {{input type="number" value=newService.quantity class="form-control input-sm"}}
         </td>
         <td>
-          ${{total}}
+          ${{newService.total}}
         </td>
         <td>
-          <button {{action 'addService'}} class="btn btn-primary btn-xs">Add</button>
+          <button {{action 'addService'}} class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-ok-circle"></span> Add</button>
         </td>
       </tr>
-      {{/with}}
     </tfoot>
   </table>
 </div>
