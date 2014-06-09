@@ -9,6 +9,7 @@ export default Ember.ObjectController.extend({
       project.save()
         .then(function(){
           self.set('isSaving', false);
+          self.transitionToRoute('project', project);
         });
     },
     deleteProject: function() {

@@ -9,6 +9,7 @@
 
     {{BASE_TAG}}
 
+    <link rel="stylesheet" href="assets/vendor.css">
     <link rel="stylesheet" href="assets/freelancetrackr.css">
     <link rel="stylesheet" href="assets/qunit.css">
     <style>
@@ -36,11 +37,12 @@
       window.ENV = {{ENV}};
     </script>
     <script src="assets/qunit.js"></script>
+    <script src="assets/qunit-notifications.js"></script>
     <script src="assets/freelancetrackr.js"></script>
     <script src="testem.js"></script>
     <script>
       require('freelancetrackr/tests/test-helper');
-      require('freelancetrackr/tests/test-loader');
     </script>
+    <script src="assets/test-loader.js"></script>
   </body>
 </html>

@@ -18,6 +18,11 @@ export default Ember.Route.extend({
     deleteClient: function(client) {
       client.destroyRecord();
       this.send('closeModal');
+    },
+
+    deleteProject: function(project) {
+      project.destroyRecord();
+      this.transitionToRoute('projects');
     }
   }
 });

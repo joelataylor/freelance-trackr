@@ -3,24 +3,24 @@
   {{#link-to 'projects.new' tagName='button' class='btn btn-default btn-new pull-right'}}<span class="glyphicon glyphicon-plus"></span> Add Project{{/link-to}}
 
   <ul class="list-group">
-    {{#each content}}
+    {{#each project in controller}}
       <li class="media list-group-item">
-        <h2 class="list-item-title">{{#link-to 'project' this}}{{name}}{{/link-to}}</h2>
+        <h2 class="list-item-title">{{#link-to 'project' project}}{{project.name}}{{/link-to}}</h2>
 
         <div class="dropdown list-item-actions">
           <span class="glyphicon glyphicon-cog dropdown-toggle" data-toggle="dropdown"></span>
           <ul class="dropdown-menu dropdown-menu-right" role="menu">
-            <li>{{#link-to 'project.edit' this}}Edit{{/link-to}}</li>
-            <li><a href="" {{action 'deleteProject' this}}>Delete</a></li>
+            <li>{{#link-to 'project.edit' project}}Edit{{/link-to}}</li>
+            <li><a href="" {{action 'deleteProject' project}}>Delete</a></li>
           </ul>
         </div>
 
-        <p class="list-item-subtitle">{{#link-to 'client' client}}{{client.name}}{{/link-to}}</p>
+        <p class="list-item-subtitle">{{#link-to 'client' project.client}}{{project.client.name}}{{/link-to}}</p>
         <ul class="list-group-nested">
-          <li>Start Date: <b class="bold">{{format-date start_date 'LL'}}</b></li>
-          <li>Client Contact: <b class="bold"><a {{bind-attr href=client.mailto}}>{{client.contact}}</a></b></li>
+          <li>Start Date: <b class="bold">{{format-date project.start_date 'LL'}}</b></li>
+          <li>Client Contact: <b class="bold"><a {{bind-attr href=project.client.mailto}}>{{project.client.contact}}</a></b></li>
         </ul>
-        <p class="list-item-dollar media-heading">${{total}}</p>
+        <p class="list-item-dollar media-heading">${{project.total}}</p>
       </li>
     {{/each}}
   </ul>

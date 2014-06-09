@@ -16,7 +16,7 @@
 
         <ul class="list-group-nested">
           <li>City: <b class="bold">{{client.city}}</b></li>
-          <li>Contact: <b class="bold">{{client.contact}}</b></li>
+          <li>Contact: <a {{bind-attr href=client.mailto}} class="bold">{{client.contact}}</a></li>
         </ul>
         <p class="list-item-dollar media-heading">${{client.totalReceived}}</p>
       </li>
