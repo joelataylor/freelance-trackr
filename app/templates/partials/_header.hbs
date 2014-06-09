@@ -12,9 +12,9 @@
 
     <div class="collapse navbar-collapse navbar-right navbar-ex1-collapse">
       <ul class="nav navbar-nav">
-        {{#link-to 'projects.index' tagName='li' class=isProjectsPath:active}}{{#link-to 'projects.index'}}Projects{{/link-to}}{{/link-to}}
+        {{#link-to 'projects.index' tagName='li' currentWhen='projects,project'}}{{#link-to 'projects.index'}}Projects{{/link-to}}{{/link-to}}
         {{#link-to 'invoices' tagName='li'}}{{#link-to 'invoices'}}Invoices{{/link-to}}{{/link-to}}
-        {{#link-to 'clients.index' tagName='li'}}{{#link-to 'clients.index'}}Clients{{/link-to}}{{/link-to}}
+        {{#link-to 'clients.index' tagName='li' currentWhen='clients,client'}}{{#link-to 'clients.index'}}Clients{{/link-to}}{{/link-to}}
         {{#link-to 'services' tagName='li'}}{{#link-to 'services'}}Services{{/link-to}}{{/link-to}}
         {{#link-to 'reports' tagName='li'}}{{#link-to 'reports'}}Reports{{/link-to}}{{/link-to}}
       </ul>

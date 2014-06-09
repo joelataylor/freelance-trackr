@@ -1,20 +1,23 @@
-<div class="well">
-  {{#link-to 'client.edit' content}}Edit Client Details{{/link-to}}
-  <h1>{{name}}</h1>
-  <p>Status: {{status}}</p>
-  <p>Contact: {{contact}}</p>
-  <p>Email: {{email}}</p>
-  <p>Phone: {{phone}}</p>
-  <p>Address: {{address}}</p>
-  <p>City: {{city}}</p>
-  <p>State: {{state}}</p>
-  <p>Zip: {{zip}}</p>
+<div class="col-md-8">
+  <h1>{{name}}
+    <span class="btn-group pull-right">
+      {{#link-to 'client.edit' content class="btn btn-success"}}<span class="glyphicon glyphicon-pencil"></span> Edit Client Details{{/link-to}}
+    </span>
+  </h1>
 
-  <h2>Projects:</h2>
-  <dl>
+  <p>Status: <b class="bold">{{#if status}}Active{{else}}Inactive{{/if}}</b></p>
+  <p>Contact: <b class="bold">{{contact}}</b></p>
+  <p>Email: <b class="bold">{{email}}</b></p>
+  <p>Phone: <b class="bold">{{phone}}</b></p>
+  <p>Address: <b class="bold">{{address}}</b></p>
+  <p>City: <b class="bold">{{city}}</b></p>
+  <p>State: <b class="bold">{{state}}</b></p>
+  <p>Zip: <b class="bold">{{zip}}</b></p>
+
+  <h3>Projects:</h3>
+  <ul>
     {{#each projects}}
-    <dt>{{#link-to 'project' this}}{{name}}{{/link-to}}</dt>
-    <dd>{{status}}</dd>
+      <li>{{#link-to 'project' this}}{{name}} - ${{total}}{{/link-to}} ({{status}})</li>
     {{/each}}
-  </dl>
+  </ul>
 </div>

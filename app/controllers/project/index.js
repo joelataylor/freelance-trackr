@@ -21,8 +21,8 @@ export default Ember.ObjectController.extend({
       service.save();
       project.save();
     },
-    editService: function(service) {
-      console.log('edit service',service);
+    saveService: function(service) {
+      service.save();
     }
   }
 });

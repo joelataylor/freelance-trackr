@@ -1,0 +1,18 @@
+{{#if isEditing}}
+  <td>{{input type="date" value=service.date class="form-control input-sm"}}</td>
+  <td>{{view Ember.Select content=service.serviceTypes value=service.type class="form-control input-sm"}}</td>
+  <td>{{input type="text" value=service.description class="form-control input-sm input-description"}}</td>
+  <td>${{input type="number" value=service.price class="form-control input-sm"}}/
+    {{view Ember.Select content=service.servicePer value=service.per class="form-control input-sm"}}</td>
+  <td>{{input type="number" value=service.quantity class="form-control input-sm"}}</td>
+  <td>${{service.total}}</td>
+  <td><a {{action 'saveService' service}} class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-ok-circle"></span> Save</a> <a {{action 'toggleEditing'}} class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-remove-circle"></span> Cancel</a></td>
+{{else}}
+  <td>{{format-date service.date 'MM/DD/YYYY'}}</td>
+  <td>{{service.type}}</td>
+  <td>{{service.description}}</td>
+  <td>${{service.price}}/{{service.per}}</td>
+  <td>{{service.quantity}}</td>
+  <td>${{service.total}}</td>
+  <td><a {{action 'toggleEditing' target='view'}} class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil"></span> Edit</a> <a {{action 'removeService' service}} class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-remove-circle"></span> Delete</a></td>
+{{/if}}

@@ -1,21 +1,62 @@
-<h1>EDIT CLIENT: {{name}}</h1>
-<p>Status:
-  <label>{{input-radio name="status" selection=status value=1}} Active</label>
-  <label>{{input-radio name="status" selection=status value=0}} Inactive</label>
-</p>
-<p>{{input type="text" placeholder="Client Name" value=name}}</p>
-<p>{{input type="text" placeholder="Contact Name" value=contact}}</p>
-<p>{{input type="text" placeholder="Phone" value=phone}}</p>
-<p>{{input type="text" placeholder="Email" value=email}}</p>
-<p>{{input type="text" placeholder="Address" value=address}}</p>
-<p>{{input type="text" placeholder="City" value=city}}</p>
-<p>{{input type="text" placeholder="State" value=state}}</p>
-<p>{{input type="text" placeholder="Zip" value=zip}}</p>
-
-<button type="button" {{action saveClient}}>Save Client</button>
-
 {{#if isDirty}}
-We have something to save!
-{{else}}
-Nothing has changed yet ...
+<div class="alert alert-warning needs-saved">
+  <p>Your updates need to be saved!</p>
+</div>
 {{/if}}
+
+<div class="col-md-8">
+  <h1>EDIT CLIENT: {{name}}</h1>
+
+  <form role="form" class="form-horizontal">
+    <div class="form-group">
+      <label class="col-sm-2 control-label">Status</label>
+      <div class="col-sm-10">
+        <label class="radio-inline">{{input-radio name="status" selection=status value=1}} Active</label>
+        <label class="radio-inline">{{input-radio name="status" selection=status value=0}} Inactive</label>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="name" class="col-sm-2 control-label">Name</label>
+      <div class="col-sm-10">{{input type="text" placeholder="Client Name" value=name class="form-control"}}</div>
+    </div>
+    <div class="form-group">
+      <label for="name" class="col-sm-2 control-label">Contact Name</label>
+      <div class="col-sm-10">{{input type="text" placeholder="Contact Name" value=contact class="form-control"}}</div>
+    </div>
+    <div class="form-group">
+      <label for="name" class="col-sm-2 control-label">Phone</label>
+      <div class="col-sm-10">{{input type="phone" placeholder="Phone" value=phone class="form-control"}}</div>
+    </div>
+    <div class="form-group">
+      <label for="name" class="col-sm-2 control-label">Email</label>
+      <div class="col-sm-10">{{input type="email" placeholder="Email" value=email class="form-control"}}</div>
+    </div>
+    <div class="form-group">
+      <label for="name" class="col-sm-2 control-label">Address</label>
+      <div class="col-sm-10">{{input type="text" placeholder="Address" value=address class="form-control"}}</div>
+    </div>
+    <div class="form-group">
+      <label for="name" class="col-sm-2 control-label">City</label>
+      <div class="col-sm-10">{{input type="text" placeholder="City" value=city class="form-control"}}</div>
+    </div>
+    <div class="form-group">
+      <label for="name" class="col-sm-2 control-label">State</label>
+      <div class="col-sm-10">{{input type="text" placeholder="State" value=state class="form-control"}}</div>
+    </div>
+    <div class="form-group">
+      <label for="name" class="col-sm-2 control-label">Zip</label>
+      <div class="col-sm-10">{{input type="text" placeholder="Zip" value=zip class="form-control"}}</div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-lg-4 col-sm-10 col-sm-offset-2">
+        {{#unless isSaving}}
+          {{#link-to 'client' this tagName="btn" class="btn btn-default"}}<span class="glyphicon glyphicon-arrow-left"></span> Back{{/link-to}}
+          <button {{action saveClient}} class="btn btn-success pull-right"><span class="glyphicon glyphicon-ok-circle"></span> Save</button>
+        {{else}}
+          <p>Saving...</p>
+        {{/unless}}
+      </div>
+    </div>
+  </form>
+</div>

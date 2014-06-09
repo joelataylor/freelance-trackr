@@ -156,27 +156,27 @@ table.services {
     text-transform: capitalize;
   }
 
-  tfoot {
-    .new-service td {
-      background-color: #ccc;
-      line-height: 2em;
-    }
-    input[type='date'] {
-      width: 11em;
-      padding-right: 0;
-    }
-    input[type='number'] {
-      width: 5em;
-      padding-right: 0;
-    }
-    .input-description {
-      width: 17em;
-    }
-
-    .tax,
-    .discount {
-      text-align: right;
-    }
+  .service td {
+    font-size: 12px;
+    line-height: 2.2em;
+  }
+  input[type='date'] {
+    width: 11em;
+    padding-right: 0;
+  }
+  input[type='number'] {
+    width: 5em;
+    padding-right: 0;
+  }
+  .input-description {
+    width: 35em;
+  }
+  .tax,
+  .discount {
+    text-align: right;
+  }
+  .new-service td {
+    background-color: #ccc;
   }
 
   .total-amount {

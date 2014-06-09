@@ -9,43 +9,38 @@
   <p>Status: <b class="bold">{{status}}</b></p>
   <p>Start Date: <b class="bold">{{format-date start_date 'MMMM D, YYYY'}}</b></p>
   {{#if finish_date}}
-  <p>Finish Date:  <b class="bold">{{finish_date}}</b></p>
+    <p>Finish Date:  <b class="bold">{{finish_date}}</b></p>
   {{/if}}
+
   <p>Tax: <b class="bold">{{tax}}%</b></p>
   <p>Discount:  <b class="bold">{{discount}}%</b></p>
+
   {{#if invoice}}
     <p>Invoice Due: <b class="bold">{{format-date invoice.due_date 'MMMM D, YYYY'}}</b></p>
   {{/if}}
 
   <h2>Services:</h2>
-  <table class="services table">
+
+  <table class="services table form-inline table-striped" border=0>
     <thead>
       <tr>
-        <td>date</td>
-        <td>type</td>
-        <td>description</td>
-        <td>price/per</td>
-        <td>quantity</td>
-        <td>total</td>
-        <td>actions</td>
+        <th>date</th>
+        <th>type</th>
+        <th>description</th>
+        <th>price/per</th>
+        <th>quantity</th>
+        <th>total</th>
+        <th>actions</th>
       </tr>
     </thead>
-    <tbody class="table-striped">
+    <tbody>
       {{#each services}}
-        <tr>
-          <td>{{date}}</td>
-          <td>{{type}}</td>
-          <td>{{description}}</td>
-          <td>${{price}}/{{per}}</td>
-          <td>{{quantity}}</td>
-          <td>${{total}}</td>
-          <td><a {{action 'editService' this}} class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil"></span> Edit</a> <a {{action 'removeService' this}} class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-remove-circle"></span> Delete</a></td>
-        </tr>
+        {{service-row service=this action="saveService"}}
       {{/each}}
     </tbody>
 
-    <tfoot class="add-service form-inline" role="form">
-      <tr class="new-service">
+    <tfoot class="add-service" role="form">
+      <tr class="service new-service">
         <td>
           <label for="date" class="sr-only">Date:</label>
           {{input type="date" value=newService.date class="form-control input-sm"}}
