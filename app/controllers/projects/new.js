@@ -9,7 +9,7 @@ export default Ember.ObjectController.extend({
   actions: {
     createProject: function() {
       var project = this.get('model'),
-          client = this.get('clients').findBy('id',this.get('client')),
+          client = this.get('client'),
           self = this;
 
       project.set('client', client);

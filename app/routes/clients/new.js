@@ -4,7 +4,9 @@ export default Ember.Route.extend({
   },
   actions: {
     willTransition: function() {
-      this.currentModel.project.destroyRecord();
+      if (this.currentModel.get('isNew')) {
+        this.currentModel.destroyRecord();
+      }
     }
   }
 });

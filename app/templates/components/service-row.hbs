@@ -6,7 +6,13 @@
     {{view Ember.Select content=service.servicePer value=service.per class="form-control input-sm"}}</td>
   <td>{{input type="number" value=service.quantity class="form-control input-sm"}}</td>
   <td>${{service.total}}</td>
-  <td><a {{action 'saveService' service}} class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-ok-circle"></span> Save</a> <a {{action 'toggleEditing'}} class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-remove-circle"></span> Cancel</a></td>
+  <td>
+    {{#if isNewService}}
+      <button {{action 'addService'}} class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-ok-circle"></span> Add</button>
+    {{else}}
+      <a {{action 'saveService' service}} class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-ok-circle"></span> Save</a> <a {{action 'toggleEditing'}} class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-remove-circle"></span> Cancel</a>
+    {{/if}}
+    </td>
 {{else}}
   <td>{{format-date service.date 'MM/DD/YYYY'}}</td>
   <td>{{service.type}}</td>

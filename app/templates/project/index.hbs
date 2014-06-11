@@ -35,40 +35,12 @@
     </thead>
     <tbody>
       {{#each services}}
-        {{service-row service=this action="saveService"}}
+        {{service-row service=this saveService="saveService" removeService="removeService"}}
       {{/each}}
     </tbody>
 
     <tfoot class="add-service" role="form">
-      <tr class="service new-service">
-        <td>
-          <label for="date" class="sr-only">Date:</label>
-          {{input type="date" value=newService.date class="form-control input-sm"}}
-        </td>
-        <td>
-          <label for="type" class="sr-only">Type:</label>
-          {{view Ember.Select content=newService.serviceTypes value=newService.type class="form-control input-sm"}}
-        </td>
-        <td>
-          <label for="description" class="sr-only">Description:</label>
-          {{input type="text" value=newService.description class="form-control input-sm input-description"}}
-        </td>
-        <td>
-          <label for="price" class="sr-only">Price:</label>
-          ${{input type="number" value=newService.price class="form-control input-sm"}}/
-          {{view Ember.Select content=newService.servicePer value=newService.per class="form-control input-sm"}}
-        </td>
-        <td>
-          <label for="quantity" class="sr-only">Quantity:</label>
-          {{input type="number" value=newService.quantity class="form-control input-sm"}}
-        </td>
-        <td>
-          ${{newService.total}}
-        </td>
-        <td>
-          <button {{action 'addService'}} class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-ok-circle"></span> Add</button>
-        </td>
-      </tr>
+      {{service-row service=newService action="addService" class="new-service" isEditing=true isNewService=true}}
 
       {{#if discount}}
       <tr>

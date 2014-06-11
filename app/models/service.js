@@ -3,7 +3,7 @@ var attr = DS.attr,
 
 export default DS.Model.extend({
   date: attr('string', {
-    defaultValue: function() { return moment().format('YYYY-MM-DD'); }
+    defaultValue: moment().format('YYYY-MM-DD')
   }),
   description: attr(),
   per: attr('string', { defaultValue: 'hour' }),

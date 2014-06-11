@@ -1,5 +1,10 @@
 export default Ember.ObjectController.extend({
   isSaving: false,
+  clients: Em.A(),
+
+  activeClients: function() {
+    return this.get('clients');
+  }.property(),
 
   actions: {
     saveProject: function() {

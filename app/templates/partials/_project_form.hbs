@@ -1,0 +1,69 @@
+<form role="form" class="form-horizontal">
+  {{#if isNew}}
+  <div class="form-group">
+    <label for="client" class="col-sm-2 control-label">Client:</label>
+    <div class="col-sm-10">
+      {{view Ember.Select
+        content=activeClients
+        optionValuePath="content.id"
+        optionLabelPath="content.name"
+        prompt="Select a Client"
+        selection=client
+        class="form-control"}}
+      </div>
+  </div>
+  {{/if}}
+  <div class="form-group">
+    <label for="name" class="col-sm-2 control-label">Name:</label>
+    <div class="col-sm-10">{{input value=name class="form-control"}}</div>
+  </div>
+  {{#unless isNew}}
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Status:</label>
+    <div class="col-sm-10">
+      <label class="radio-inline">{{input-radio name="status" selection=status value="complete"}} Complete</label>
+      <label class="radio-inline">{{input-radio name="status" selection=status value="in-progress"}} In Progress</label>
+    </div>
+  </div>
+  {{/unless}}
+  <div class="form-group">
+    <label for="tax" class="col-sm-2 control-label">Tax:</label>
+    <div class="col-lg-4 col-sm-10">
+      <div class="input-group">
+        {{input type="number" value=tax class="form-control"}} <span class="input-group-addon">%</span>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="discount" class="col-sm-2 control-label">Discount:</label>
+    <div class="col-lg-4 col-sm-10">
+      <div class="input-group">
+        {{input type="number" value=discount class="form-control"}} <span class="input-group-addon">%</span>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="start_date" class="col-sm-2 control-label">Start Date:</label>
+    <div class="col-lg-4 col-sm-10">{{input type="date" value=start_date class="form-control"}}</div>
+  </div>
+  <div class="form-group">
+    <label for="finish_date" class="col-sm-2 control-label">Finish Date:</label>
+    <div class="col-lg-4 col-sm-10">{{input type="date" value=finish_date class="form-control"}}</div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-md-6 col-sm-10">
+      {{#unless isSaving}}
+        {{#if isNew}}
+          {{#link-to 'projects' class='btn btn-link btn-cancel'}}<span class="glyphicon glyphicon-arrow-left"></span> Cancel{{/link-to}}
+          <button {{action 'createProject'}} class="btn btn-primary pull-right"><span class="glyphicon glyphicon-ok-circle"></span> Create Project</button>
+        {{else}}
+          {{#link-to 'project' this class="btn btn-default btn-cancel"}}<span class="glyphicon glyphicon-arrow-left"></span> Back{{/link-to}}
+          <button {{action 'saveProject'}} class="btn btn-success pull-right"><span class="glyphicon glyphicon-ok-circle"></span> Save Project</button>
+        {{/if}}
+      {{else}}
+        <p>Saving...</p>
+      {{/unless}}
+    </div>
+  </div>
+</form>
