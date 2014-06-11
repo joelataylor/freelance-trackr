@@ -25,10 +25,12 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     ENV.APP.LOG_VIEW_LOOKUPS = true;
+
+    ENV.APP.firebaseDB = 'https://freelancetrackr.firebaseio.com';
   }
 
   if (environment === 'production') {
-
+    ENV.APP.firebaseDB = 'https://brilliant-fire-7282.firebaseio.com';
   }
 
   return ENV;
